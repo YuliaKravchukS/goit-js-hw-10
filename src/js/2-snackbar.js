@@ -1,35 +1,88 @@
-'use scrict'
+'use strict'
 
 
 import iziToast from "izitoast";
 
 import "izitoast/dist/css/iziToast.min.css";
 
+// const btnCreate = document.querySelector('button');
+
+// const form = document.querySelector('.form')
+// const radioButtons = form.querySelectorAll('input[type="radio"][name="state"]');
+
+// form.addEventListener('submit', onFormSubmit);
+
+// function onFormSubmit(e) {
+//   e.preventDefault();
+//   const inputDelay = document.querySelector('input[name="delay"]');
+//   const inputDelayValue = parseInt(inputDelay.value);
+//   const obj = {
+//     value: '',
+//     delay: inputDelayValue,
+//     shouldResolve: form.querySelector('input[name="state"]:checked').value,
+// };
+
+// makePromise(obj)
+//   .then(value =>
+//     iziToast.success({
+//         title: '',
+//         message: value,
+//     })) 
+//   .catch(error =>
+//     iziToast.error({
+//     title: '',
+//     message: error,
+//     }));
+// }
+
+
+// const makePromise = ({ value, delay, shouldResolve }) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (shouldResolve === 'fulfilled') {
+//         value = `✅ Fulfilled promise in ${delay}ms`;
+//         resolve(value);
+//       } else {
+//         value = `❌ Rejected promise in ${delay}ms`;
+//         reject(value);
+//       }
+//     }, delay);
+//   });
+// };
+
 const btnCreate = document.querySelector('button');
-const inputDelay = document.querySelector('input[name="delay"]');
-const form = document.querySelector('.form')
+const form = document.querySelector('.form');
 const radioButtons = form.querySelectorAll('input[type="radio"][name="state"]');
-const inputDelayValue = parseInt(inputDelay.value);
+
 form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(e) {
-    e.preventDefault();
-}
-const obj = {
+  e.preventDefault();
+  const inputDelay = document.querySelector('input[name="delay"]');
+  const inputDelayValue = parseInt(inputDelay.value);
+
+  const obj = {
     value: '',
     delay: inputDelayValue,
-    shouldResolve: radioButtons.value,
-};
+    shouldResolve: document.querySelector('input[type="radio"][name="state"]:checked').value,
+  };
 
-makePromise(obj)
-    .then(value => iziToast.success({
+  makePromise(obj)
+    .then((value) => {
+      console.log('Promise resolved:', value);
+      iziToast.success({
         title: '',
         message: value,
-    })) 
-	.catch(error => iziToast.error({
-    title: '',
-    message: error,
-    }));
+      });
+    })
+    .catch((error) => {
+      console.error('Promise rejected:', error);
+      iziToast.error({
+        title: '',
+        message: error,
+      });
+    });
+}
 
 const makePromise = ({ value, delay, shouldResolve }) => {
   return new Promise((resolve, reject) => {
@@ -37,11 +90,10 @@ const makePromise = ({ value, delay, shouldResolve }) => {
       if (shouldResolve === 'fulfilled') {
         value = `✅ Fulfilled promise in ${delay}ms`;
         resolve(value);
-      } else {
+      }
         value = `❌ Rejected promise in ${delay}ms`;
         reject(value);
-      }
+      
     }, delay);
   });
 };
-
