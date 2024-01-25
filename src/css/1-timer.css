@@ -33,17 +33,23 @@ button {
   align-items: center;
   gap: 10px; */
   border-radius: 8px;
-  background: #cfcfcf;
+  background: #4e75ff;
+
   outline: none;
   border: none;
 
-  color: #989898;
+  color: #fff;
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 150% */
   letter-spacing: 0.64px;
+}
+
+button:disabled {
+  background: #cfcfcf;
+  color: #989898;
 }
 
 .timer {
