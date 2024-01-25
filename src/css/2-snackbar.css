@@ -1,3 +1,7 @@
+section {
+  margin-bottom: 50px;
+}
+
 input {
   border: none;
   outline: none;
@@ -23,6 +27,7 @@ input[name='delay'] {
   border: 1px solid #808080;
   margin-bottom: 30px;
   margin-top: 8px;
+  padding: 8px 16px;
 }
 
 fieldset {
@@ -42,11 +47,14 @@ fieldset:hover,
 fieldset:focus {
   border: 1px solid #000;
 }
-input:hover,
-input:focus {
+
+input[name='delay']:hover,
+input[name='delay']:focus {
+  background-image: url('./src/img/Frame6.png');
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-size: 32px 16px;
   border: 1px solid #000;
-  background: url(/src/public/favicon.svg) no-repeat 16px 16px;
-  padding-right: 16px;
 }
 
 button {

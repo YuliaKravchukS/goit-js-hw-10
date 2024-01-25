@@ -62,6 +62,7 @@ function onFormSubmit(e) {
   const inputDelayValue = parseInt(inputDelay.value);
 
   const obj = {
+    
     value: '',
     delay: inputDelayValue,
     shouldResolve: document.querySelector('input[type="radio"][name="state"]:checked').value,
@@ -69,16 +70,14 @@ function onFormSubmit(e) {
 
   makePromise(obj)
     .then((value) => {
-      console.log('Promise resolved:', value);
       iziToast.success({
         title: '',
         message: value,
       });
     })
     .catch((error) => {
-      console.error('Promise rejected:', error);
       iziToast.error({
-        title: '',
+        title: '2',
         message: error,
       });
     });
@@ -90,10 +89,9 @@ const makePromise = ({ value, delay, shouldResolve }) => {
       if (shouldResolve === 'fulfilled') {
         value = `✅ Fulfilled promise in ${delay}ms`;
         resolve(value);
-      }
-        value = `❌ Rejected promise in ${delay}ms`;
+      } else {
         reject(value);
-      
+      }
     }, delay);
   });
 };
